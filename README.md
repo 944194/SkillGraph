@@ -6,7 +6,7 @@ The application helps users discover suitable career opportunities based on thei
 
 ## Live Application
 
-https://skillgraph-x561.onrender.com/
+https://skillgraph-x56l.onrender.com/
 
 ## GitHub Repository
 
