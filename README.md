@@ -157,6 +157,7 @@ Job ──REQUIRES_SKILL──> Skill
 Job ──OFFERED_BY──> Company
 
 Company ──IN_INDUSTRY──> Industry
+```
 
 ```mermaid
 flowchart LR
@@ -195,3 +196,4 @@ With CognoDB, the relationships are represented directly as graph connections:
 
 ```text
 Person → Skill → Job → Company → Industry
+```
