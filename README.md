@@ -127,41 +127,12 @@ Related opportunities:
 
 The application follows this general architecture:
 
-```text
-                    ┌─────────────────────┐
-                    │       User          │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │   Web Frontend      │
-                    │   HTML/CSS/JS       │
-                    └──────────┬──────────┘
-                               │
-                               │ HTTP Requests
-                               ▼
-                    ┌─────────────────────┐
-                    │    Flask Backend    │
-                    │       app.py        │
-                    └──────────┬──────────┘
-                               │
-                               │ Graph Queries
-                               ▼
-                    ┌─────────────────────┐
-                    │      CognoDB        │
-                    │    Graph Database   │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-              ┌─────────────────────────────────┐
-              │ Career Relationships            │
-              │                                 │
-              │ Person → Skill → Job            │
-              │              ↓                  │
-              │           Company               │
-              │              ↓                  │
-              │           Industry              │
-              └─────────────────────────────────┘
+```mermaid
+flowchart TD
+    A[User] --> B[Web Frontend<br/>HTML / CSS / JS]
+    B -->|HTTP Requests| C[Flask Backend<br/>app.py]
+    C -->|Graph Queries| D[CognoDB<br/>Graph Database]
+```
 ---
 
 ## Graph Data Model
@@ -187,53 +158,32 @@ Job ──OFFERED_BY──> Company
 
 Company ──IN_INDUSTRY──> Industry
 
-                    ┌──────────────┐
-                    │    Person    │
-                    │    Rahul     │
-                    └──────┬───────┘
-                           │
-                       HAS_SKILL
-                           │
-                           ▼
-                    ┌──────────────┐
-                    │    Skill     │
-                    │   Python     │
-                    │   Django     │
-                    │     SQL      │
-                    │  REST API    │
-                    └──────▲───────┘
-                           │
-                     REQUIRES_SKILL
-                           │
-                    ┌──────┴───────┐
-                    │      Job     │
-                    │              │
-                    │Backend Dev.  │
-                    │Data Analyst  │
-                    │Python Dev.   │
-                    └──────┬───────┘
-                           │
-                       OFFERED_BY
-                           │
-                           ▼
-                    ┌──────────────┐
-                    │   Company    │
-                    │              │
-                    │   TechNova   │
-                    │   CloudSoft  │
-                    │   DataWorks  │
-                    └──────┬───────┘
-                           │
-                      IN_INDUSTRY
-                           │
-                           ▼
-                    ┌──────────────┐
-                    │   Industry   │
-                    │              │
-                    │   Software   │
-                    │   FinTech    │
-                    │  Healthcare  │
-                    └──────────────┘
+```mermaid
+flowchart LR
+    P[Person<br/>Rahul]
+
+    S1[Skill<br/>Python]
+    S2[Skill<br/>Django]
+    S3[Skill<br/>SQL]
+    S4[Skill<br/>REST API]
+
+    J[Job<br/>Backend Developer]
+    C[Company<br/>TechNova]
+    I[Industry<br/>Software]
+
+    P -->|HAS_SKILL| S1
+    P -->|HAS_SKILL| S2
+    P -->|HAS_SKILL| S3
+    P -->|HAS_SKILL| S4
+
+    J -->|REQUIRES_SKILL| S1
+    J -->|REQUIRES_SKILL| S2
+    J -->|REQUIRES_SKILL| S3
+    J -->|REQUIRES_SKILL| S4
+
+    J -->|OFFERED_BY| C
+    C -->|IN_INDUSTRY| I
+```
 
 ## Why a Graph Database?
 
