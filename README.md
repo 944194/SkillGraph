@@ -154,7 +154,7 @@ The application follows this general architecture:
                                │
                                ▼
               ┌─────────────────────────────────┐
-              │ Career Relationships             │
+              │ Career Relationships            │
               │                                 │
               │ Person → Skill → Job            │
               │              ↓                  │
