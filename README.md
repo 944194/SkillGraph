@@ -162,3 +162,75 @@ The application follows this general architecture:
               │              ↓                  │
               │           Industry              │
               └─────────────────────────────────┘
+---
+
+## Graph Data Model
+
+SkillGraph represents career information as connected nodes and relationships in CognoDB.
+
+### Nodes
+
+- **Person** — represents a person/candidate.
+- **Skill** — represents a technical skill.
+- **Job** — represents a job role.
+- **Company** — represents a company offering a job.
+- **Industry** — represents the industry in which a company operates.
+
+### Relationships
+
+```text
+Person ──HAS_SKILL──> Skill
+
+Job ──REQUIRES_SKILL──> Skill
+
+Job ──OFFERED_BY──> Company
+
+Company ──IN_INDUSTRY──> Industry
+
+                    ┌──────────────┐
+                    │    Person    │
+                    │    Rahul     │
+                    └──────┬───────┘
+                           │
+                       HAS_SKILL
+                           │
+                           ▼
+                    ┌──────────────┐
+                    │    Skill     │
+                    │   Python     │
+                    │   Django     │
+                    │     SQL      │
+                    │  REST API    │
+                    └──────▲───────┘
+                           │
+                     REQUIRES_SKILL
+                           │
+                    ┌──────┴───────┐
+                    │      Job     │
+                    │              │
+                    │Backend Dev.  │
+                    │Data Analyst  │
+                    │Python Dev.   │
+                    └──────┬───────┘
+                           │
+                       OFFERED_BY
+                           │
+                           ▼
+                    ┌──────────────┐
+                    │   Company    │
+                    │              │
+                    │   TechNova   │
+                    │   CloudSoft  │
+                    │   DataWorks  │
+                    └──────┬───────┘
+                           │
+                      IN_INDUSTRY
+                           │
+                           ▼
+                    ┌──────────────┐
+                    │   Industry   │
+                    │              │
+                    │   Software   │
+                    │   FinTech    │
+                    │  Healthcare  │
+                    └──────────────┘
