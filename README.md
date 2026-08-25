@@ -234,3 +234,14 @@ Company ──IN_INDUSTRY──> Industry
                     │   FinTech    │
                     │  Healthcare  │
                     └──────────────┘
+
+## Why a Graph Database?
+
+SkillGraph is built around relationships between people, skills, jobs, companies, and industries. These connections are the core of the application, which makes a graph database a natural fit.
+
+In a relational database, this information would normally be spread across multiple tables such as `People`, `Skills`, `Jobs`, `Companies`, and `Industries`. Finding connected information would require several JOIN operations.
+
+With CognoDB, the relationships are represented directly as graph connections:
+
+```text
+Person → Skill → Job → Company → Industry
