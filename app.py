@@ -185,4 +185,4 @@ def get_skill_explorer(skill_name):
 
 if __name__ == "__main__":
     verify_connection()
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)
